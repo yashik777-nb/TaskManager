@@ -1,9 +1,17 @@
 // CRUD Create Read Update and Delete
+// const mongodb = require("mongodb");
+// const MongoClient = mongodb.MongoClient;
+// const ObjectID = mongodb.ObjectID;
 
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient, ObjectID } = require("mongodb");
 
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "task-manager";
+
+// const id = new ObjectID();
+// console.log(id.id.length);
+// console.log(id.getTimestamp());
+// console.log(id.toHexString().length);
 
 MongoClient.connect(
   connectionURL,
@@ -16,7 +24,8 @@ MongoClient.connect(
     // Single User Insert
     // db.collection("users").insertOne(
     //   {
-    //     name: "Yash",
+    //     _id: id,
+    //     name: "Bhagavan",
     //     age: 28,
     //   },
     //   (error, result) => {
@@ -44,25 +53,53 @@ MongoClient.connect(
     // );
 
     // Multiple Tasks Insertion
-    db.collection("tasks").insertMany(
-      [
-        {
-          description: "Task One",
-          completed: true,
-        },
-        {
-          description: "Task Two",
-          completed: false,
-        },
-        {
-          description: "Task Three",
-          completed: true,
-        },
-      ],
-      (error, result) => {
-        if (error) return console.log("Error creating tasks");
-        console.log(result.ops);
-      }
-    );
+    // db.collection("tasks").insertMany(
+    //   [
+    //     {
+    //       description: "Task One",
+    //       completed: true,
+    //     },
+    //     {
+    //       description: "Task Two",
+    //       completed: false,
+    //     },
+    //     {
+    //       description: "Task Three",
+    //       completed: true,
+    //     },
+    //   ],
+    //   (error, result) => {
+    //     if (error) return console.log("Error creating tasks");
+    //     console.log(result.ops);
+    //   }
+    // );
+
+    // Read Data
+    // Single User
+    // db.collection("users").findOne(
+    //   { _id: new ObjectID("601078e2a11f3f1674e6406c") },
+    //   (error, user) => {
+    //     if (error) return console.log("unable to fetch");
+    //     console.log(user);
+    //   }
+    // );
+
+    // Multiple Users
+    // db.collection("users")
+    //   .find({ age: 28 })
+    //   .toArray((error, users) => console.log(users));
+
+    // db.collection("users")
+    //   .find({ age: 28 })
+    //   .count((error, users) => console.log(users));
+
+    // db.collection("tasks").findOne(
+    //   { _id: new ObjectID("60107dc1bd44422becf446d2") },
+    //   (error, task) => console.log(task)
+    // );
+
+    // db.collection("tasks")
+    //   .find({ completed: false })
+    //   .toArray((error, tasks) => console.log(tasks));
   }
 );
