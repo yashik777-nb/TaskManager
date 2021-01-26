@@ -101,5 +101,47 @@ MongoClient.connect(
     // db.collection("tasks")
     //   .find({ completed: false })
     //   .toArray((error, tasks) => console.log(tasks));
+
+    // Update Data
+    // Update User
+    // db.collection("users")
+    //   .updateOne(
+    //     { _id: new ObjectID("60107af93c77dc42ecd5a250") },
+    //     {
+    //       $set: {
+    //         name: "Yash IK",
+    //       },
+    //       $inc: {
+    //         age: 1,
+    //       },
+    //     }
+    //   )
+    //   .then((data) => console.log(data.matchedCount, data.modifiedCount))
+    //   .catch((err) => console.log(err));
+
+    // Update Many
+    // db.collection("tasks")
+    //   .updateMany(
+    //     { completed: false },
+    //     {
+    //       $set: {
+    //         completed: true,
+    //       },
+    //     }
+    //   )
+    //   .then((data) => console.log(data.matchedCount, data.modifiedCount))
+    //   .catch((err) => console.log(err));
+
+    // Delete Data
+    // Delete Multiple data
+    db.collection("users")
+      .deleteMany({ age: 29 })
+      .then((result) => console.log(result.deletedCount))
+      .catch((err) => console.log(err));
+
+    db.collection("tasks")
+      .deleteMany({ _id: new ObjectID("60107dc1bd44422becf446d2") })
+      .then((result) => console.log(result.deletedCount))
+      .catch((err) => console.log(err));
   }
 );
